@@ -27,10 +27,18 @@ initial `n`.
 
 ```rust,editable,should_panic
 {{#include exercise.rs:collatz_length}}
-  todo!("Implement this")
+  fn collatz_length(mut n: i32) -> u32 {
+    if n == 1 {
+        1
+    } else if n % 2 == 0 {
+        collatz_length(n/2) + 1
+    } else {
+        collatz_length(n*3 + 1) + 1
+    }
+  }
 }
 
 {{#include exercise.rs:main}}
-  todo!("Implement this")
+   println!("Length: {}", collatz_length(11));
 }
 ```
